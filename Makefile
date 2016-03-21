@@ -1,4 +1,4 @@
-IOS_SDK_VERSION = 8.3
+IOS_SDK_VERSION = 9.2
 
 IOS_CC = gcc -ObjC
 DEVICE_SUPPORT = $(shell xcode-select --print-path)/Platforms/iPhoneOS.platform/DeviceSupport
@@ -18,9 +18,9 @@ demo: demo.c
 ios-deploy: clean ios-deploy.c
 	$(IOS_CC) -g -o ios-deploy -framework Foundation -framework CoreFoundation -framework MobileDevice -F/System/Library/PrivateFrameworks ios-deploy.c
 
-symlink: 
-	cd $(DEVICE_SUPPORT); ln -sfn "`find . -type d -maxdepth 1 -exec basename {} \; | tail -1`" Latest	
-    
+symlink:
+	cd $(DEVICE_SUPPORT); ln -sfn "`find . -type d -maxdepth 1 -exec basename {} \; | tail -1`" Latest
+
 install: symlink ios-deploy
 	mkdir -p $(prefix)/bin
 	cp ios-deploy $(prefix)/bin
