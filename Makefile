@@ -1,4 +1,4 @@
-IOS_SDK_VERSION = 9.2
+IOS_SDK_VERSION = 9.3
 
 IOS_CC = gcc -ObjC
 DEVICE_SUPPORT = $(shell xcode-select --print-path)/Platforms/iPhoneOS.platform/DeviceSupport
