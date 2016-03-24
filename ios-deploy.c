@@ -157,7 +157,7 @@ int AMDeviceMountImage(AMDeviceRef device, CFStringRef image, CFDictionaryRef op
 mach_error_t AMDeviceLookupApplications(AMDeviceRef device, CFDictionaryRef options, CFDictionaryRef *result);
 int AMDeviceGetInterfaceType(struct am_device *device);
 
-bool found_device = false, debug = false, verbose = false, unbuffered = false, nostart = false, detect_only = false, install = true, uninstall = false;
+bool found_device = false, debug = false, only_debugserver = false, print_packets = false, verbose = false, unbuffered = false, nostart = false, detect_only = false, install = true, uninstall = false;
 bool command_only = false;
 char *command = NULL;
 char *target_filename = NULL;
@@ -789,6 +789,10 @@ void write_lldb_prep_cmds(AMDeviceRef device, CFURLRef disk_app_url) {
     CFStringFindAndReplace(cmds, CFSTR("{python_file_path}"), cf_python_file_path, range, 0);
     range.length = CFStringGetLength(cmds);
 
+    printf("---------------------------------------------------\n");
+    CFShow(cmds);
+    printf("---------------------------------------------------\n");
+
     CFDataRef cmds_data = CFStringCreateExternalRepresentation(NULL, cmds, kCFStringEncodingASCII, 0);
     char prep_cmds_path[300] = PREP_CMDS_PATH;
     if(device_id != NULL)
@@ -838,39 +842,50 @@ CFSocketRef lldb_socket;
 CFWriteStreamRef serverWriteStream = NULL;
 CFWriteStreamRef lldbWriteStream = NULL;
 
+#define PRINT_PACKET(...) \
+do                        \
+{                         \
+  if ( print_packets )    \
+    printf(__VA_ARGS__);  \
+} while ( false );
+
 int kill_ptree(pid_t root, int signum);
 void
 server_callback (CFSocketRef s, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info)
 {
-    int res;
-
     if (CFDataGetLength (data) == 0) {
         // close the socket on which we've got end-of-file, the server_socket.
+        printf("server_callback: got EOF, closing socket\n");
         CFSocketInvalidate(s);
         CFRelease(s);
         return;
     }
-    res = write (CFSocketGetNative (lldb_socket), CFDataGetBytePtr (data), CFDataGetLength (data));
+
+    PRINT_PACKET("server_callback: received data from debugserver: %s\n", CFDataGetBytePtr(data));
+
+    write(CFSocketGetNative(lldb_socket), CFDataGetBytePtr(data), CFDataGetLength(data));
 }
 
 void lldb_callback(CFSocketRef s, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info)
 {
-    //printf ("lldb: %s\n", CFDataGetBytePtr (data));
-
     if (CFDataGetLength (data) == 0) {
         // close the socket on which we've got end-of-file, the lldb_socket.
+        printf("client_callback: got EOF, closing socket\n");
         CFSocketInvalidate(s);
         CFRelease(s);
         return;
     }
-    write (gdbfd, CFDataGetBytePtr (data), CFDataGetLength (data));
+
+    PRINT_PACKET("client_callback: sending data to debugserver: %s\n", CFDataGetBytePtr(data));
+
+    write(gdbfd, CFDataGetBytePtr (data), CFDataGetLength (data));
 }
 
 void fdvendor_callback(CFSocketRef s, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info) {
     CFSocketNativeHandle socket = (CFSocketNativeHandle)(*((CFSocketNativeHandle *)data));
 
     assert (callbackType == kCFSocketAcceptCallBack);
-    //PRINT ("callback!\n");
+    printf("somebody is trying to connect to us...\n");
 
     lldb_socket  = CFSocketCreateWithNative(NULL, socket, kCFSocketDataCallBack, &lldb_callback, NULL);
     int flag = 1;
@@ -1014,9 +1029,6 @@ void setup_lldb(AMDeviceRef device, CFURLRef url) {
 
     CFRelease(url);
 
-    printf("[100%%] Connecting to remote debug server\n");
-    printf("-------------------------\n");
-
     setpgid(getpid(), 0);
     signal(SIGHUP, killed);
     signal(SIGINT, killed);
@@ -1029,6 +1041,16 @@ void setup_lldb(AMDeviceRef device, CFURLRef url) {
 
 void launch_debugger(AMDeviceRef device, CFURLRef url) {
     setup_lldb(device, url);
+
+    if ( only_debugserver )
+    {
+      printf("waiting for debugger client to connect...\n");
+      return;
+    }
+
+    printf("[100%%] Connecting to remote debug server\n");
+    printf("-------------------------\n");
+
     int pid = fork();
     if (pid == 0) {
         signal(SIGHUP, SIG_DFL);
@@ -1324,13 +1346,13 @@ void list_bundle_id(AMDeviceRef device)
     assert(AMDeviceIsPaired(device));
     check_error(AMDeviceValidatePairing(device));
     check_error(AMDeviceStartSession(device));
-    
+
     NSArray *a = [NSArray arrayWithObjects:@"CFBundleIdentifier", nil];
     NSDictionary *optionsDict = [NSDictionary dictionaryWithObject:a forKey:@"ReturnAttributes"];
     CFDictionaryRef options = (CFDictionaryRef)optionsDict;
     CFDictionaryRef result = nil;
     check_error(AMDeviceLookupApplications(device, options, &result));
-    
+
     CFIndex count;
     count = CFDictionaryGetCount(result);
     const void *keys[count];
@@ -1340,7 +1362,7 @@ void list_bundle_id(AMDeviceRef device)
         const char * key =  CFStringGetCStringPtr((CFStringRef)keys[i], kCFStringEncodingASCII);
         printf("%s\n", key);
     }
-    
+
     check_error(AMDeviceStopSession(device));
     check_error(AMDeviceDisconnect(device));
 }
@@ -1561,7 +1583,7 @@ void handle_device(AMDeviceRef device) {
     CFStringRef found_device_id = AMDeviceCopyDeviceIdentifier(device),
                 device_full_name = get_device_full_name(device),
                 device_interface_name = get_device_interface_name(device);
-                
+
     if (detect_only) {
         CFShow([NSString stringWithFormat:@"[....] Found %@ connected through %@.\n", device_full_name, device_interface_name]);
         found_device = true;
@@ -1695,7 +1717,7 @@ void handle_device(AMDeviceRef device) {
         printf("[100%%] Installed package %s\n", app_path);
     }
 
-    if (!debug)
+    if (!debug && !only_debugserver)
         exit(0); // no debug phase
 
     if (justlaunch)
@@ -1758,6 +1780,8 @@ void usage(const char* app) {
     printf(
         "Usage: %s [OPTION]...\n"
         "  -d, --debug                  launch the app in lldb after installation\n"
+        "  -S, --debugserver            launch the debugserver and wait for a debugger client to connect\n"
+        "  -P, --print_packets          print the gdb packets sent between the client and server\n"
         "  -i, --id <device_id>         the id of the device to connect to\n"
         "  -c, --detect                 only detect if the device is connected\n"
         "  -b, --bundle <bundle.app>    the path to the app bundle to be installed\n"
@@ -1792,6 +1816,8 @@ void show_version() {
 int main(int argc, char *argv[]) {
     static struct option longopts[] = {
         { "debug", no_argument, NULL, 'd' },
+        { "debugserver", no_argument, NULL, 'S'},
+        { "print_packets", no_argument, NULL, 'P'},
         { "id", required_argument, NULL, 'i' },
         { "bundle", required_argument, NULL, 'b' },
         { "args", required_argument, NULL, 'a' },
@@ -1820,7 +1846,7 @@ int main(int argc, char *argv[]) {
     };
     char ch;
 
-    while ((ch = getopt_long(argc, argv, "VmcdvunrILeD:R:i:b:a:t:g:x:p:1:2:o:l::w::9::B::", longopts, NULL)) != -1)
+    while ((ch = getopt_long(argc, argv, "VmcdSPvunrILeD:R:i:b:a:t:g:x:p:1:2:o:l::w::9::B::", longopts, NULL)) != -1)
     {
         switch (ch) {
         case 'm':
@@ -1829,6 +1855,12 @@ int main(int argc, char *argv[]) {
             break;
         case 'd':
             debug = 1;
+            break;
+        case 'S':
+            only_debugserver = 1;
+            break;
+        case 'P':
+            print_packets = 1;
             break;
         case 'i':
             device_id = optarg;
