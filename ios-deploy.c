@@ -20,7 +20,6 @@
 
 #define APP_VERSION    "1.7.0"
 #define PREP_CMDS_PATH "/tmp/fruitstrap-lldb-prep-cmds-"
-#define LLDB_SHELL "lldb -s " PREP_CMDS_PATH
 /*
  * Startup script passed to lldb.
  * To see how xcode interacts with lldb, put this into .lldbinit:
@@ -94,9 +93,10 @@ def connect_command(debugger, command, result, internal_dict):\n\
 def run_command(debugger, command, result, internal_dict):\n\
     device_app = internal_dict['fruitstrap_device_app']\n\
     args = command.split('--',1)\n\
+    print('run_command args: ' + str(args))\n\
     error = lldb.SBError()\n\
     lldb.target.modules[0].SetPlatformFileSpec(lldb.SBFileSpec(device_app))\n\
-    lldb.target.Launch(lldb.SBLaunchInfo(shlex.split(args[1] and args[1] or '{args}')), error)\n\
+    lldb.target.Launch(lldb.SBLaunchInfo(shlex.split('{args}')), error)\n\
     lockedstr = ': Locked'\n\
     if lockedstr in str(error):\n\
        print('\\nDevice Locked\\n')\n\
@@ -169,6 +169,7 @@ char *app_path = NULL;
 char *device_id = NULL;
 char *args = NULL;
 char *list_root = NULL;
+const char *lldb_path = "lldb";
 int timeout = 0;
 int port = 0;	// 0 means "dynamically assigned"
 CFStringRef last_path = NULL;
@@ -1069,7 +1070,7 @@ void launch_debugger(AMDeviceRef device, CFURLRef url) {
             setup_dummy_pipe_on_stdin(pfd);
 
         char lldb_shell[400];
-        sprintf(lldb_shell, LLDB_SHELL);
+        sprintf(lldb_shell, "%s -s "PREP_CMDS_PATH, lldb_path);
         if(device_id != NULL)
             strcat(lldb_shell, device_id);
 
@@ -1106,7 +1107,7 @@ void launch_debugger_and_exit(AMDeviceRef device, CFURLRef url) {
             perror("dup2 failed");
 
         char lldb_shell[400];
-        sprintf(lldb_shell, LLDB_SHELL);
+        sprintf(lldb_shell, "%s -s "PREP_CMDS_PATH, lldb_path);
         if(device_id != NULL)
             strcat(lldb_shell, device_id);
 
@@ -1782,6 +1783,7 @@ void usage(const char* app) {
         "  -d, --debug                  launch the app in lldb after installation\n"
         "  -S, --debugserver            launch the debugserver and wait for a debugger client to connect\n"
         "  -P, --print_packets          print the gdb packets sent between the client and server\n"
+        "  -H, --lldb_path <path>       path to lldb (defaults to 'lldb')\n"
         "  -i, --id <device_id>         the id of the device to connect to\n"
         "  -c, --detect                 only detect if the device is connected\n"
         "  -b, --bundle <bundle.app>    the path to the app bundle to be installed\n"
@@ -1818,6 +1820,7 @@ int main(int argc, char *argv[]) {
         { "debug", no_argument, NULL, 'd' },
         { "debugserver", no_argument, NULL, 'S'},
         { "print_packets", no_argument, NULL, 'P'},
+        { "lldb_path", required_argument, NULL, 'H'},
         { "id", required_argument, NULL, 'i' },
         { "bundle", required_argument, NULL, 'b' },
         { "args", required_argument, NULL, 'a' },
@@ -1846,7 +1849,7 @@ int main(int argc, char *argv[]) {
     };
     char ch;
 
-    while ((ch = getopt_long(argc, argv, "VmcdSPvunrILeD:R:i:b:a:t:g:x:p:1:2:o:l::w::9::B::", longopts, NULL)) != -1)
+    while ((ch = getopt_long(argc, argv, "VmcdSPvunrILeD:R:H:i:b:a:t:g:x:p:1:2:o:l::w::9::B::", longopts, NULL)) != -1)
     {
         switch (ch) {
         case 'm':
@@ -1861,6 +1864,9 @@ int main(int argc, char *argv[]) {
             break;
         case 'P':
             print_packets = 1;
+            break;
+        case 'H':
+            lldb_path = optarg;
             break;
         case 'i':
             device_id = optarg;

@@ -47,7 +47,7 @@ This will install ios-deploy in the `bin` folder of `/usr/local`, i.e. `/usr/loc
       -m, --noinstall              directly start debugging without app install (-d not required)
       -p, --port <number>          port used for device, default: 12345
       -r, --uninstall              uninstall the app before install (do not use with -m; app cache and data are cleared)
-      -9, --uninstall_only         uninstall the app ONLY. Use only with -1 <bundle_id> 
+      -9, --uninstall_only         uninstall the app ONLY. Use only with -1 <bundle_id>
       -1, --bundle_id <bundle id>  specify bundle id for list, upload, and uninstall_only
       -l, --list                   list files
       -o, --upload <file>          upload file
@@ -89,13 +89,13 @@ The commands below assume that you have an app called `my.app` with bundle id `b
 
     // Download the Documents directory of the app *only*
     ios-deploy --download=/Documents -bundle_id my.app.id --to ./my_download_location
-    
+
     // List ids and names of connected devices
     ios-deploy -c
-    
+
     // Uninstall an app
     ios-deploy --uninstall_only --bundle_id my.bundle.id
-    
+
     // list all bundle ids of all apps on your device
     ios-deploy --list_bundle_id
 
@@ -109,3 +109,33 @@ The included demo.app represents the minimum required to get code running on iOS
 ## Notes
 
 * With some modifications, it may be possible to use this without Xcode installed; however, you would need a copy of the relevant DeveloperDiskImage.dmg (included with Xcode). lldb would also run slower as symbols would be downloaded from the device on-the-fly.
+
+1) find the dyld debug structure in memory (dyld_all_image_infos). IIRC
+there's a custom debugserver command to get its address.
+  - qShlibInfoAddr
+  - DNBProcessGetSharedLibraryInfoAddress
+  - debugserver/source/DNB.cpp
+
+2) build a list of images by parsing dyld_all_image_infos (there is
+already some code in mac_debmod.cpp but it's OS X specific and has not
+really been updated to handle dyld_shared_cache so there is some work to
+do).
+  - ~/lldb/source/Plugins/ObjectFile/Mach-O/ObjectFileMachO.cpp:2402,2667
+  - ~/lldb/source/Target/Process.cpp:Process::Launch
+  - ~/lldb/source/Plugins/Process/gdb-remote/ProcessGDBRemote::DoLaunch
+  - jGetLoadedDynamicLibrariesInfos,ProcessGDBRemote::GetLoadedDynamicLibrariesInfos
+  - ~/lldb/include/lldb/Target/Process.h:1921
+  - DynamicLoaderMacOSXDYLD::NotifyBreakpointHit,ABIMacOSX_arm64::GetArgumentValues,
+  - DynamicLoaderMacOSXDYLD::AddModulesUsingImageInfosAddress
+  - /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/mach-o/dyld_images.h
+  - ProcessGDBRemote::DoLaunch
+
+3) register the images as modules and their symbols as debug symbols
+
+4) maybe even try to fetch symbol files from the xcode directory for
+better debugging (and/or app's dSYM for source-level debugging).
+
+5) ARM W,D registers - dbg_gdb.cfg, aarch64-fpu.xml
+
+6) closing IDA while debugging does not stop remote process.
+   have to step out of a few functions in order from stop process to work - why?

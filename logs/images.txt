@@ -1,0 +1,60 @@
+client_callback: sending data to debugserver: $jGetLoadedDynamicLibrariesInfos:{
+  "image_count" : 153,
+  "image_list_address" : 4832673184
+}]#9e
+server_callback: received data from debugserver:
+${
+    "images" : [{
+        "load_address" : 4295589888,
+        "mach_header" : {
+            "cpusubtype" : 0,
+            "cputype" : 16777228,
+            "filetype" : 2,
+            "magic" : 4277009103
+        }],
+        "mod_date" : 0,
+        "pathname" : "/var/mobile/Containers/Bundle/Application/27B6267F-CC93-45F2-8187-EFBB324031C0/test.app/test",
+        "segments" : [
+            {"fileoff":0,"filesize":0,"maxprot":0,"name":"__PAGEZERO","vmaddr":0,"vmsize":4294967296}],
+            {"fileoff":0,"filesize":32768,"maxprot":5,"name":"__TEXT","vmaddr":4294967296,"vmsize":32768}],
+            {"fileoff":32768,"filesize":16384,"maxprot":3,"name":"__DATA","vmaddr":4295000064,"vmsize":16384}],
+            {"fileoff":49152,"filesize":17488,"maxprot":1,"name":"__LINKEDIT","vmaddr":4295016448,"vmsize":32768}]
+            ],
+        "uuid" : "87C475F5-F608-348A-88E3-E85FEDBF30E5"
+        }], {
+        "load_address" : 6503055360,
+        "mach_header" : {
+            "cpusubtype" : 0,
+            "cputype" : 16777228,
+            "filetype" : 6,
+            "magic" : 4277009103
+            }],
+        "mod_date" : 0,
+        "pathname" : "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "segments" : [
+            {"fileoff":0,"filesize":2547712,"maxprot":5,"name":"__TEXT","vmaddr":6462406656,"vmsize":2547712}],
+            {"fileoff":454381568,"filesize":75104,"maxprot":3,"name":"__DATA","vmaddr":6930386944,"vmsize":75104}],
+            {"fileoff":470221504,"filesize":21992,"maxprot":3,"name":"__DATA_DIRTY","vmaddr":6946226880,"vmsize":21992}],
+            {"fileoff":395636736,"filesize":569384,"maxprot":3,"name":"__DATA_CONST","vmaddr":6871642112,"vmsize":569384}],
+            {"fileoff":474791936,"filesize":56164352,"maxprot":1,"name":"__LINKEDIT","vmaddr":6984351744,"vmsize":56164352}]
+            ],
+        "uuid" : "9C53CE05-4A56-30C9-8001-ECD8FD71080A"
+        }], {
+        "load_address" : 6502907904,
+        "mach_header" : {
+            "cpusubtype":0,
+            "cputype":16777228,
+            "filetype":6,
+            "magic":4277009103
+            }],
+        "mod_date":0,
+        "pathname":/usr/lib/libextension.dylib",
+        "segments":[
+            {"fileoff":0,"filesize":126976,"maxprot":5,"name":"__TEXT","vmaddr":6462259200,"vmsize":126976}],
+            {"fileoff":454369280,"filesize":4848,"maxprot":3,"name":"__DATA","vmaddr":6930374656,"vmsize":4848}],
+            {"fileoff":395599872,"filesize":30400,"maxprot":3,"name":"__DATA_CONST","vmaddr":6871605248,"vmsize":30400}],
+            {"fileoff":470451320,"filesize":1456,"maxprot":3,"name":"__DATA_DIRTY","vmaddr":6946456696,"vmsize":1456}],
+            {"fileoff":474791936,"filesize":56164352,"maxprot":1,"name":"__LINKEDIT","vmaddr":6984351744,"vmsize":56164352}]
+            ],
+        "uuid":"B59C9055-87A6-3C9D-A06B-FC8594AD8AE8"
+        }],
