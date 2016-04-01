@@ -1,0 +1,214 @@
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   262144    32 8192 allocating memory for b-tree...
+   163840    20 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+   688128            total memory allocated
+
+Loading processor module /Users/troy/idasrc/current/bin/x86_mac_gcc/idaq.app/Contents/MacOS/procs/arm64.imc64 for ARM...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'test.app' has been loaded.
+Compiling file '/Users/troy/idasrc/current/bin/x86_mac_gcc/idaq.app/Contents/MacOS/idc/ida.idc'...
+Executing function 'main'...
+Sample IDC plugin: init() has been called
+Sample IDC plugin: term() has been called
+init() called!
+term() called!
+Cannot find sync source "view:IDA View-PC"; ignoring group
+Shortcut Alt+F12 is used for two actions:
+  Edit/Plugins/HT_VIEW notification handling example
+  Edit/Plugins/Jump to next fixup
+Shortcut for "Edit/Plugins/Jump to next fixup" will be disabled.
+------------------------------------------------------------------------------------------------------------
+Python 2.7.10 (default, Oct 23 2015, 18:05:06)
+[GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)]
+IDAPython 64-bit v1.7.0 final (serial 0) (c) The IDAPython Team <idapython@googlegroups.com>
+------------------------------------------------------------------------------------------------------------
+ARG: /private/var/mobile/Containers/Bundle/Application/835BCE71-385B-4C1F-949C-3A2DEFD2303F/test.app
+> $?#3f
+< +$E02#a7
+> +
+> $QSetDisableASLR:1#ce
+< +$OK#9a
+> +
+> $A190,0,2f707269766174652f7661722f6d6f62696c652f436f6e7461696e6572732f42756e646c652f4170706c69636174696f6e2f38333542434537312d333835422d344331462d393439432d3341324445464432333033462f746573742e617070#c7
+< +$OK#9a
+> +
+> $qLaunchSuccess#a5
+< +$OK#9a
+> +
+gdb>> $?#3f
+< +$T11thread:1137ac;qaddr:1a0720180;00:0000000000000000;01:0000000000000000;02:0000000000000000;03:0000000000000000;04:0000000000000000;05:0000000000000000;06:0000000000000000;07:0000000000000000;08:0000000000000000;09:0000000000000000;0a:0000000000000000;0b:0000000000000000;0c:0000000000000000;0d:0000000000000000;0e:0000000000000000;0f:0000000000000000;10:0000000000000000;11:0000000000000000;12:0000000000000000;13:0000000000000000;14:0000000000000000;15:0000000000000000;16:0000000000000000;17:0000000000000000;18:0000000000000000;19:0000000000000000;1a:0000000000000000;1b:0000000000000000;1c:0000000000000000;1d:0000000000000000;1e:0000000000000000;1f:f8fbd56f01000000;20:0010082001000000;21:00000000;metype:5;mecount:2;medata:10003;medata:11;#6b
+> +
+> $qfThreadInfo#bb
+< +$m1137ac#fd
+> +
+> $qsThreadInfo#c8
+< +$l#6c
+> +
+handle process start -2
+> $qSupported#37
+< +$qXfer:features:read+;PacketSize=20000;qEcho+#53
+> +
+> $qXfer:features:read:target.xml:0,4e1a#76
+< +$m<?xml version="1.0"?>\x0A<target version="1.0">\x0A<feature name="com.apple.debugserver.arm64">\x0A  <reg name="x0" regnum="0" offset="0" bitsize="64" group="general" altname="arg1" group_id="1" gcc_regnum="0" dwarf_regnum="0" generic="arg1" invalidate_regnums="0,34"/>\x0A  <reg name="x1" regnum="1" offset="8" bitsize="64" group="general" altname="arg2" group_id="1" gcc_regnum="1" dwarf_regnum="1" generic="arg2" invalidate_regnums="1,35"/>\x0A  <reg name="x2" regnum="2" offset="16" bitsize="64" group="general" altname="arg3" group_id="1" gcc_regnum="2" dwarf_regnum="2" generic="arg3" invalidate_regnums="2,36"/>\x0A  <reg name="x3" regnum="3" offset="24" bitsize="64" group="general" altname="arg4" group_id="1" gcc_regnum="3" dwarf_regnum="3" generic="arg4" invalidate_regnums="3,37"/>\x0A  <reg name="x4" regnum="4" offset="32" bitsize="64" group="general" altname="arg5" group_id="1" gcc_regnum="4" dwarf_regnum="4" generic="arg5" invalidate_regnums="4,38"/>\x0A  <reg name="x5" regnum="5" offset="40" bitsize="64" group="general" altname="arg6" group_id="1" gcc_regnum="5" dwarf_regnum="5" generic="arg6" invalidate_regnums="5,39"/>\x0A  <reg name="x6" regnum="6" offset="48" bitsize="64" group="general" altname="arg7" group_id="1" gcc_regnum="6" dwarf_regnum="6" generic="arg7" invalidate_regnums="6,40"/>\x0A  <reg name="x7" regnum="7" offset="56" bitsize="64" group="general" altname="arg8" group_id="1" gcc_regnum="7" dwarf_regnum="7" generic="arg8" invalidate_regnums="7,41"/>\x0A  <reg name="x8" regnum="8" offset="64" bitsize="64" group="general" group_id="1" gcc_regnum="8" dwarf_regnum="8" invalidate_regnums="8,42"/>\x0A  <reg name="x9" regnum="9" offset="72" bitsize="64" group="general" group_id="1" gcc_regnum="9" dwarf_regnum="9" invalidate_regnums="9,43"/>\x0A  <reg name="x10" regnum="10" offset="80" bitsize="64" group="general" group_id="1" gcc_regnum="10" dwarf_regnum="10" invalidate_regnums="10,44"/>\x0A  <reg name="x11" regnum="11" offset="88" bitsize="64" group="general" group_id="1" gcc_regnum="11" dwarf_regnum="11" invalidate_regnums="11,45"/>\x0A  <reg name="x12" regnum="12" offset="96" bitsize="64" group="general" group_id="1" gcc_regnum="12" dwarf_regnum="12" invalidate_regnums="12,46"/>\x0A  <reg name="x13" regnum="13" offset="104" bitsize="64" group="general" group_id="1" gcc_regnum="13" dwarf_regnum="13" invalidate_regnums="13,47"/>\x0A  <reg name="x14" regnum="14" offset="112" bitsize="64" group="general" group_id="1" gcc_regnum="14" dwarf_regnum="14" invalidate_regnums="14,48"/>\x0A  <reg name="x15" regnum="15" offset="120" bitsize="64" group="general" group_id="1" gcc_regnum="15" dwarf_regnum="15" invalidate_regnums="15,49"/>\x0A  <reg name="x16" regnum="16" offset="128" bitsize="64" group="general" group_id="1" gcc_regnum="16" dwarf_regnum="16" invalidate_regnums="16,50"/>\x0A  <reg name="x17" regnum="17" offset="136" bitsize="64" group="general" group_id="1" gcc_regnum="17" dwarf_regnum="17" invalidate_regnums="17,51"/>\x0A  <reg name="x18" regnum="18" offset="144" bitsize="64" group="general" group_id="1" gcc_regnum="18" dwarf_regnum="18" invalidate_regnums="18,52"/>\x0A  <reg name="x19" regnum="19" offset="152" bitsize="64" group="general" group_id="1" gcc_regnum="19" dwarf_regnum="19" invalidate_regnums="19,53"/>\x0A  <reg name="x20" regnum="20" offset="160" bitsize="64" group="general" group_id="1" gcc_regnum="20" dwarf_regnum="20" invalidate_regnums="20,54"/>\x0A  <reg name="x21" regnum="21" offset="168" bitsize="64" group="general" group_id="1" gcc_regnum="21" dwarf_regnum="21" invalidate_regnums="21,55"/>\x0A  <reg name="x22" regnum="22" offset="176" bitsize="64" group="general" group_id="1" gcc_regnum="22" dwarf_regnum="22" invalidate_regnums="22,56"/>\x0A  <reg name="x23" regnum="23" offset="184" bitsize="64" group="general" group_id="1" gcc_regnum="23" dwarf_regnum="23" invalidate_regnums="23,57"/>\x0A  <reg name="x24" regnum="24" offset="192" bitsize="64" group="general" group_id="1" gcc_regnum="24" dwarf_regnum="24" invalidate_regnums="24,58"/>\x0A  <reg name="x25" regnum="25" offset="200" bitsize="64" group="general" group_id="1" gcc_regnum="25" dwarf_regnum="25" invalidate_regnums="25,59"/>\x0A  <reg name="x26" regnum="26" offset="208" bitsize="64" group="general" group_id="1" gcc_regnum="26" dwarf_regnum="26" invalidate_regnums="26,60"/>\x0A  <reg name="x27" regnum="27" offset="216" bitsize="64" group="general" group_id="1" gcc_regnum="27" dwarf_regnum="27" invalidate_regnums="27,61"/>\x0A  <reg name="x28" regnum="28" offset="224" bitsize="64" group="general" group_id="1" gcc_regnum="28" dwarf_regnum="28" invalidate_regnums="28,62"/>\x0A  <reg name="fp" regnum="29" offset="232" bitsize="64" group="general" altname="x29" group_id="1" gcc_regnum="29" dwarf_regnum="29" generic="fp"/>\x0A  <reg name="lr" regnum="30" offset="240" bitsize="64" group="general" altname="x30" group_id="1" gcc_regnum="30" dwarf_regnum="30" generic="ra"/>\x0A  <reg name="sp" regnum="31" offset="248" bitsize="64" group="general" altname="xsp" group_id="1" gcc_regnum="31" dwarf_regnum="31" generic="sp"/>\x0A  <reg name="pc" regnum="32" offset="256" bitsize="64" group="general" group_id="1" gcc_regnum="32" dwarf_regnum="32" generic="pc"/>\x0A  <reg name="cpsr" regnum="33" offset="264" bitsize="32" group="general" altname="flags" group_id="1" gcc_regnum="33" dwarf_regnum="33"/>\x0A  <reg name="w0" regnum="34" offset="0" bitsize="32" group="general" group_id="1" value_regnums="0" invalidate_regnums="0,34"/>\x0A  <reg name="w1" regnum="35" offset="8" bitsize="32" group="general" group_id="1" value_regnums="1" invalidate_regnums="1,35"/>\x0A  <reg name="w2" regnum="36" offset="16" bitsize="32" group="general" group_id="1" value_regnums="2" invalidate_regnums="2,36"/>\x0A  <reg name="w3" regnum="37" offset="24" bitsize="32" group="general" group_id="1" value_regnums="3" invalidate_regnums="3,37"/>\x0A  <reg name="w4" regnum="38" offset="32" bitsize="32" group="general" group_id="1" value_regnums="4" invalidate_regnums="4,38"/>\x0A  <reg name="w5" regnum="39" offset="40" bitsize="32" group="general" group_id="1" value_regnums="5" invalidate_regnums="5,39"/>\x0A  <reg name="w6" regnum="40" offset="48" bitsize="32" group="general" group_id="1" value_regnums="6" invalidate_regnums="6,40"/>\x0A  <reg name="w7" regnum="41" offset="56" bitsize="32" group="general" group_id="1" value_regnums="7" invalidate_regnums="7,41"/>\x0A  <reg name="w8" regnum="42" offset="64" bitsize="32" group="general" group_id="1" value_regnums="8" invalidate_regnums="8,42"/>\x0A  <reg name="w9" regnum="43" offset="72" bitsize="32" group="general" group_id="1" value_regnums="9" invalidate_regnums="9,43"/>\x0A  <reg name="w10" regnum="44" offset="80" bitsize="32" group="general" group_id="1" value_regnums="10" invalidate_regnums="10,44"/>\x0A  <reg name="w11" regnum="45" offset="88" bitsize="32" group="general" group_id="1" value_regnums="11" invalidate_regnums="11,45"/>\x0A  <reg name="w12" regnum="46" offset="96" bitsize="32" group="general" group_id="1" value_regnums="12" invalidate_regnums="12,46"/>\x0A  <reg name="w13" regnum="47" offset="104" bitsize="32" group="general" group_id="1" value_regnums="13" invalidate_regnums="13,47"/>\x0A  <reg name="w14" regnum="48" offset="112" bitsize="32" group="general" group_id="1" value_regnums="14" invalidate_regnums="14,48"/>\x0A  <reg name="w15" regnum="49" offset="120" bitsize="32" group="general" group_id="1" value_regnums="15" invalidate_regnums="15,49"/>\x0A  <reg name="w16" regnum="50" offset="128" bitsize="32" group="general" group_id="1" value_regnums="16" invalidate_regnums="16,50"/>\x0A  <reg name="w17" regnum="51" offset="136" bitsize="32" group="general" group_id="1" value_regnums="17" invalidate_regnums="17,51"/>\x0A  <reg name="w18" regnum="52" offset="144" bitsize="32" group="general" group_id="1" value_regnums="18" invalidate_regnums="18,52"/>\x0A  <reg name="w19" regnum="53" offset="152" bitsize="32" group="general" group_id="1" value_regnums="19" invalidate_regnums="19,53"/>\x0A  <reg name="w20" regnum="54" offset="160" bitsize="32" group="general" group_id="1" value_regnums="20" invalidate_regnums="20,54"/>\x0A  <reg name="w21" regnum="55" offset="168" bitsize="32" group="general" group_id="1" value_regnums="21" invalidate_regnums="21,55"/>\x0A  <reg name="w22" regnum="56" offset="176" bitsize="32" group="general" group_id="1" value_regnums="22" invalidate_regnums="22,56"/>\x0A  <reg name="w23" regnum="57" offset="184" bitsize="32" group="general" group_id="1" value_regnums="23" invalidate_regnums="23,57"/>\x0A  <reg name="w24" regnum="58" offset="192" bitsize="32" group="general" group_id="1" value_regnums="24" invalidate_regnums="24,58"/>\x0A  <reg name="w25" regnum="59" offset="200" bitsize="32" group="general" group_id="1" value_regnums="25" invalidate_regnums="25,59"/>\x0A  <reg name="w26" regnum="60" offset="208" bitsize="32" group="general" group_id="1" value_regnums="26" invalidate_regnums="26,60"/>\x0A  <reg name="w27" regnum="61" offset="216" bitsize="32" group="general" group_id="1" value_regnums="27" invalidate_regnums="27,61"/>\x0A  <reg name="w28" regnum="62" offset="224" bitsize="32" group="general" group_id="1" value_regnums="28" invalidate_regnums="28,62"/>\x0A  <reg name="v0" regnum="63" offset="268" bitsize="128" group="vector" type="float" altname="q0" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="64" invalidate_regnums="63,129,97"/>\x0A  <reg name="v1" regnum="64" offset="284" bitsize="128" group="vector" type="float" altname="q1" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="65" invalidate_regnums="64,130,98"/>\x0A  <reg name="v2" regnum="65" offset="300" bitsize="128" group="vector" type="float" altname="q2" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="66" invalidate_regnums="65,131,99"/>\x0A  <reg name="v3" regnum="66" offset="316" bitsize="128" group="vector" type="float" altname="q3" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="67" invalidate_regnums="66,132,100"/>\x0A  <reg name="v4" regnum="67" offset="332" bitsize="128" group="vector" type="float" altname="q4" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="68" invalidate_regnums="67,133,101"/>\x0A  <reg name="v5" regnum="68" offset="348" bitsize="128" group="vector" type="float" altname="q5" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="69" invalidate_regnums="68,134,102"/>\x0A  <reg name="v6" regnum="69" offset="364" bitsize="128" group="vector" type="float" altname="q6" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="70" invalidate_regnums="69,135,103"/>\x0A  <reg name="v7" regnum="70" offset="380" bitsize="128" group="vector" type="float" altname="q7" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="71" invalidate_regnums="70,136,104"/>\x0A  <reg name="v8" regnum="71" offset="396" bitsize="128" group="vector" type="float" altname="q8" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="72" invalidate_regnums="71,137,105"/>\x0A  <reg name="v9" regnum="72" offset="412" bitsize="128" group="vector" type="float" altname="q9" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="73" invalidate_regnums="72,138,106"/>\x0A  <reg name="v10" regnum="73" offset="428" bitsize="128" group="vector" type="float" altname="q10" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="74" invalidate_regnums="73,139,107"/>\x0A  <reg name="v11" regnum="74" offset="444" bitsize="128" group="vector" type="float" altname="q11" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="75" invalidate_regnums="74,140,108"/>\x0A  <reg name="v12" regnum="75" offset="460" bitsize="128" group="vector" type="float" altname="q12" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="76" invalidate_regnums="75,141,109"/>\x0A  <reg name="v13" regnum="76" offset="476" bitsize="128" group="vector" type="float" altname="q13" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="77" invalidate_regnums="76,142,110"/>\x0A  <reg name="v14" regnum="77" offset="492" bitsize="128" group="vector" type="float" altname="q14" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="78" invalidate_regnums="77,143,111"/>\x0A  <reg name="v15" regnum="78" offset="508" bitsize="128" group="vector" type="float" altname="q15" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="79" invalidate_regnums="78,144,112"/>\x0A  <reg name="v16" regnum="79" offset="524" bitsize="128" group="vector" type="float" altname="q16" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="80" invalidate_regnums="79,145,113"/>\x0A  <reg name="v17" regnum="80" offset="540" bitsize="128" group="vector" type="float" altname="q17" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="81" invalidate_regnums="80,146,114"/>\x0A  <reg name="v18" regnum="81" offset="556" bitsize="128" group="vector" type="float" altname="q18" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="82" invalidate_regnums="81,147,115"/>\x0A  <reg name="v19" regnum="82" offset="572" bitsize="128" group="vector" type="float" altname="q19" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="83" invalidate_regnums="82,148,116"/>\x0A  <reg name="v20" regnum="83" offset="588" bitsize="128" group="vector" type="float" altname="q20" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="84" invalidate_regnums="83,149,117"/>\x0A  <reg name="v21" regnum="84" offset="604" bitsize="128" group="vector" type="float" altname="q21" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="85" invalidate_regnums="84,150,118"/>\x0A  <reg name="v22" regnum="85" offset="620" bitsize="128" group="vector" type="float" altname="q22" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="86" invalidate_regnums="85,151,119"/>\x0A  <reg name="v23" regnum="86" offset="636" bitsize="128" group="vector" type="float" altname="q23" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="87" invalidate_regnums="86,152,120"/>\x0A  <reg name="v24" regnum="87" offset="652" bitsize="128" group="vector" type="float" altname="q24" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="88" invalidate_regnums="87,153,121"/>\x0A  <reg name="v25" regnum="88" offset="668" bitsize="128" group="vector" type="float" altname="q25" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="89" invalidate_regnums="88,154,122"/>\x0A  <reg name="v26" regnum="89" offset="684" bitsize="128" group="vector" type="float" altname="q26" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="90" invalidate_regnums="89,155,123"/>\x0A  <reg name="v27" regnum="90" offset="700" bitsize="128" group="vector" type="float" altname="q27" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="91" invalidate_regnums="90,156,124"/>\x0A  <reg name="v28" regnum="91" offset="716" bitsize="128" group="vector" type="float" altname="q28" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="92" invalidate_regnums="91,157,125"/>\x0A  <reg name="v29" regnum="92" offset="732" bitsize="128" group="vector" type="float" altname="q29" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="93" invalidate_regnums="92,158,126"/>\x0A  <reg name="v30" regnum="93" offset="748" bitsize="128" group="vector" type="float" altname="q30" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="94" invalidate_regnums="93,159,127"/>\x0A  <reg name="v31" regnum="94" offset="764" bitsize="128" group="vector" type="float" altname="q31" encoding="vector" format="vector-uint8" group_id="2" dwarf_regnum="95" invalidate_regnums="94,160,128"/>\x0A  <reg name="fpsr" regnum="95" offset="780" bitsize="32" group="general" group_id="2"/>\x0A  <reg name="fpcr" regnum="96" offset="784" bitsize="32" group="general" group_id="2"/>\x0A  <reg name="s0" regnum="97" offset="268" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="63" invalidate_regnums="63,129,97"/>\x0A  <reg name="s1" regnum="98" offset="284" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="64" invalidate_regnums="64,130,98"/>\x0A  <reg name="s2" regnum="99" offset="300" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="65" invalidate_regnums="65,131,99"/>\x0A  <reg name="s3" regnum="100" offset="316" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="66" invalidate_regnums="66,132,100"/>\x0A  <reg name="s4" regnum="101" offset="332" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="67" invalidate_regnums="67,133,101"/>\x0A  <reg name="s5" regnum="102" offset="348" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="68" invalidate_regnums="68,134,102"/>\x0A  <reg name="s6" regnum="103" offset="364" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="69" invalidate_regnums="69,135,103"/>\x0A  <reg name="s7" regnum="104" offset="380" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="70" invalidate_regnums="70,136,104"/>\x0A  <reg name="s8" regnum="105" offset="396" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="71" invalidate_regnums="71,137,105"/>\x0A  <reg name="s9" regnum="106" offset="412" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="72" invalidate_regnums="72,138,106"/>\x0A  <reg name="s10" regnum="107" offset="428" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="73" invalidate_regnums="73,139,107"/>\x0A  <reg name="s11" regnum="108" offset="444" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="74" invalidate_regnums="74,140,108"/>\x0A  <reg name="s12" regnum="109" offset="460" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="75" invalidate_regnums="75,141,109"/>\x0A  <reg name="s13" regnum="110" offset="476" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="76" invalidate_regnums="76,142,110"/>\x0A  <reg name="s14" regnum="111" offset="492" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="77" invalidate_regnums="77,143,111"/>\x0A  <reg name="s15" regnum="112" offset="508" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="78" invalidate_regnums="78,144,112"/>\x0A  <reg name="s16" regnum="113" offset="524" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="79" invalidate_regnums="79,145,113"/>\x0A  <reg name="s17" regnum="114" offset="540" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="80" invalidate_regnums="80,146,114"/>\x0A  <reg name="s18" regnum="115" offset="556" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="81" invalidate_regnums="81,147,115"/>\x0A  <reg name="s19" regnum="116" offset="572" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="82" invalidate_regnums="82,148,116"/>\x0A  <reg name="s20" regnum="117" offset="588" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="83" invalidate_regnums="83,149,117"/>\x0A  <reg name="s21" regnum="118" offset="604" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="84" invalidate_regnums="84,150,118"/>\x0A  <reg name="s22" regnum="119" offset="620" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="85" invalidate_regnums="85,151,119"/>\x0A  <reg name="s23#13
+> +
+> $qXfer:features:read:target.xml:4e1a,4e1a#71
+< +$l" regnum="120" offset="636" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="86" invalidate_regnums="86,152,120"/>\x0A  <reg name="s24" regnum="121" offset="652" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="87" invalidate_regnums="87,153,121"/>\x0A  <reg name="s25" regnum="122" offset="668" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="88" invalidate_regnums="88,154,122"/>\x0A  <reg name="s26" regnum="123" offset="684" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="89" invalidate_regnums="89,155,123"/>\x0A  <reg name="s27" regnum="124" offset="700" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="90" invalidate_regnums="90,156,124"/>\x0A  <reg name="s28" regnum="125" offset="716" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="91" invalidate_regnums="91,157,125"/>\x0A  <reg name="s29" regnum="126" offset="732" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="92" invalidate_regnums="92,158,126"/>\x0A  <reg name="s30" regnum="127" offset="748" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="93" invalidate_regnums="93,159,127"/>\x0A  <reg name="s31" regnum="128" offset="764" bitsize="32" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="94" invalidate_regnums="94,160,128"/>\x0A  <reg name="d0" regnum="129" offset="268" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="63" invalidate_regnums="63,129,97"/>\x0A  <reg name="d1" regnum="130" offset="284" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="64" invalidate_regnums="64,130,98"/>\x0A  <reg name="d2" regnum="131" offset="300" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="65" invalidate_regnums="65,131,99"/>\x0A  <reg name="d3" regnum="132" offset="316" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="66" invalidate_regnums="66,132,100"/>\x0A  <reg name="d4" regnum="133" offset="332" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="67" invalidate_regnums="67,133,101"/>\x0A  <reg name="d5" regnum="134" offset="348" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="68" invalidate_regnums="68,134,102"/>\x0A  <reg name="d6" regnum="135" offset="364" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="69" invalidate_regnums="69,135,103"/>\x0A  <reg name="d7" regnum="136" offset="380" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="70" invalidate_regnums="70,136,104"/>\x0A  <reg name="d8" regnum="137" offset="396" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="71" invalidate_regnums="71,137,105"/>\x0A  <reg name="d9" regnum="138" offset="412" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="72" invalidate_regnums="72,138,106"/>\x0A  <reg name="d10" regnum="139" offset="428" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="73" invalidate_regnums="73,139,107"/>\x0A  <reg name="d11" regnum="140" offset="444" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="74" invalidate_regnums="74,140,108"/>\x0A  <reg name="d12" regnum="141" offset="460" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="75" invalidate_regnums="75,141,109"/>\x0A  <reg name="d13" regnum="142" offset="476" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="76" invalidate_regnums="76,142,110"/>\x0A  <reg name="d14" regnum="143" offset="492" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="77" invalidate_regnums="77,143,111"/>\x0A  <reg name="d15" regnum="144" offset="508" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="78" invalidate_regnums="78,144,112"/>\x0A  <reg name="d16" regnum="145" offset="524" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="79" invalidate_regnums="79,145,113"/>\x0A  <reg name="d17" regnum="146" offset="540" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="80" invalidate_regnums="80,146,114"/>\x0A  <reg name="d18" regnum="147" offset="556" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="81" invalidate_regnums="81,147,115"/>\x0A  <reg name="d19" regnum="148" offset="572" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="82" invalidate_regnums="82,148,116"/>\x0A  <reg name="d20" regnum="149" offset="588" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="83" invalidate_regnums="83,149,117"/>\x0A  <reg name="d21" regnum="150" offset="604" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="84" invalidate_regnums="84,150,118"/>\x0A  <reg name="d22" regnum="151" offset="620" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="85" invalidate_regnums="85,151,119"/>\x0A  <reg name="d23" regnum="152" offset="636" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="86" invalidate_regnums="86,152,120"/>\x0A  <reg name="d24" regnum="153" offset="652" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="87" invalidate_regnums="87,153,121"/>\x0A  <reg name="d25" regnum="154" offset="668" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="88" invalidate_regnums="88,154,122"/>\x0A  <reg name="d26" regnum="155" offset="684" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="89" invalidate_regnums="89,155,123"/>\x0A  <reg name="d27" regnum="156" offset="700" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="90" invalidate_regnums="90,156,124"/>\x0A  <reg name="d28" regnum="157" offset="716" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="91" invalidate_regnums="91,157,125"/>\x0A  <reg name="d29" regnum="158" offset="732" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="92" invalidate_regnums="92,158,126"/>\x0A  <reg name="d30" regnum="159" offset="748" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="93" invalidate_regnums="93,159,127"/>\x0A  <reg name="d31" regnum="160" offset="764" bitsize="64" group="float" type="float" encoding="ieee754" format="float" group_id="2" value_regnums="94" invalidate_regnums="94,160,128"/>\x0A  <reg name="far" regnum="161" offset="788" bitsize="64" group="general" group_id="3"/>\x0A  <reg name="esr" regnum="162" offset="796" bitsize="32" group="general" group_id="3"/>\x0A  <reg name="exception" regnum="163" offset="800" bitsize="32" group="general" group_id="3"/>\x0A</feature>\x0A<groups>\x0A  <group id="1" name="General Purpose Registers"/>\x0A  <group id="2" name="Floating Point Registers"/>\x0A  <group id="3" name="Exception State Registers"/>\x0A</groups>\x0A</target>\x0A#c1
+> +
+> $qfThreadInfo#bb
+< +$m1137ac#fd
+> +
+> $qsThreadInfo#c8
+< +$l#6c
+> +
+Sync source "reg:PC" already present in other group; ignoring group
+GDE1: PROCESS_START ea=120081000 base=FFFFFFFFFFFFFFFF size=0 rebase=FFFFFFFFFFFFFFFF name=/private/var/mobile/Containers/Bundle/Application/835BCE71-385B-4C1F-949C-3A2DEFD2303F/test.app pid=0 tid=1128364 handled=0
+FFFFFFFFFFFFFFFF: process /private/var/mobile/Containers/Bundle/Application/835BCE71-385B-4C1F-949C-3A2DEFD2303F/test.app has started (pid=0)
+> $m100006880,4#94
+< +$E08#ad
+> +
+continue after event PROCESS_START ea=120081000 base=FFFFFFFFFFFFFFFF size=0 rebase=FFFFFFFFFFFFFFFF name=/private/var/mobile/Containers/Bundle/Application/835BCE71-385B-4C1F-949C-3A2DEFD2303F/test.app pid=0 tid=1128364 handled=0 (1 pending, block type 1, sig#=17)
+event->eid=1, erasing child_signum
+not resuming yet because still starting.
+> $qShlibInfoAddr#6a
+< +$1200b0000#e5
+> +
+iPhone OS detected, dyld_all_image_infos = 1200B0000
+> $m1200b0000,12c#44
+< +$0e000000000000000000000000000000a8ba002001000000000000000000000000000020010000000000000000000000747802200100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000320010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000#7c
+> +
+12000BAA8: setting bpt for library notifications
+> $Z0,12000baa8,4#65
+< +$E09#ae
+> +
+> $B12000baa8,S#10
+< +$#00
+> +
+> $M12000baa8,4:d4200020#f2
+< +$E09#ae
+> +
+> $Z1,12000baa8,4#66
+< +$#00
+> +
+GDE1: NO_EVENT ea=120081000 pid=0 tid=1128364 handled=1
+> $m100006880,4#94
+< +$E08#ad
+> +
+continue after event NO_EVENT ea=120081000 pid=0 tid=1128364 handled=1 (0 pending, block type 1, sig#=0)
+event->eid=0, erasing child_signum
+resuming...
+> $vCont?#49
+< +$vCont;c;C;s;S#62
+> +
+> $vCont;c#a8
+prepare_to_pause_process
+< +{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}{TIMEOUT}
+> \x03
+< $T11thread:1137ac;qaddr:1a0720180;00:0540001000000000;01:0608000700000000;02:0000000000000000;03:000c000000000000;04:0319000000000000;05:ffffffff00000000;06:0000000000000000;07:0000000000000000;08:bffbffff00000000;09:0000000700000000;0a:0001000700000000;0b:c279060000000000;0c:0100000000000000;0d:03500f00004f0f00;0e:0000000000000000;0f:00500f0000500f00;10:e1ffffffffffffff;11:0000000000000000;12:0000000000000000;13:0000000000000000;14:ffffffff00000000;15:0319000000000000;16:000c000000000000;17:38edd56f01000000;18:0608000700000000;19:0000000000000000;1a:0608000700000000;1b:000c000000000000;1c:0100000000000000;1d:40ecd56f01000000;1e:3853c88201000000;1f:f0ebd56f01000000;20:bc54c88201000000;21:00000060;metype:5;mecount:2;medata:10003;medata:11;#e3
+> +
+successfully paused the process, good!
+GDE1: NO_EVENT ea=182C854BC pid=-2 tid=1128364 handled=0
+> $m182c85400,100#29
+< +$d0018092011000d4c0035fd6f0018092011000d4c0035fd610028092011000d4c0035fd630028092011000d4c0035fd650028092011000d4c0035fd670028092011000d4c0035fd690028092011000d4c0035fd6b0028092011000d4c0035fd6d0028092011000d4c0035fd6f0028092011000d4c0035fd610038092011000d4c0035fd630038092011000d4c0035fd650038092011000d4c0035fd670038092011000d4c0035fd690038092011000d4c0035fd6d0038092011000d4c0035fd6f0038092011000d4c0035fd610048092011000d4c0035fd630048092011000d4c0035fd650048092011000d4c0035fd670048092011000d4c0035fd690048092#61
+> +
+
+(lldb) p/x dyri
+(dyld_raw_infos) $5 = {
+  version = 0x0000000e
+  num_info = 0x00000000
+  info_array = 0x0000000000000000
+  dyld_notify = 0x000000012000baa8
+  processDetachedFromSharedRegion = 0x00
+  libSystemInitialized = 0x00
+  _padding = ([0] = 0x00, [1] = 0x00)
+  dyldImageLoadAddress = 0x2000000000000000
+  jitInfo = 0x0000000000000001
+  dyldVersion = 0x2002787400000000
+  errorMessage = 0x0000000000000001
+  terminationFlags = 0x0000000000000000
+  coreSymbolicationShmPage = 0x0000000000000000
+  systemOrderFlag = 0x0000000000000000
+  uuidArrayCount = 0x0000000000000000
+  uuidArray = 0x0000000000000000
+  dyldAllImageInfosAddress = 0x2003000000000000
+  initialImageCount = 0x0000000000000001
+  errorKind = 0x0000000000000000
+  errorClientOfDylibPath = 0x0000000000000000
+  errorTargetDylibPath = 0x0000000000000000
+  errorSymbol = 0x0000000000000000
+  sharedCacheSlide = 0x0000000000000000
+  sharedCacheUUID = {
+    [0] = 0x00
+    [1] = 0x00
+    [2] = 0x00
+    [3] = 0x00
+    [4] = 0x00
+    [5] = 0x00
+    [6] = 0x00
+    [7] = 0x00
+    [8] = 0x00
+    [9] = 0x00
+    [10] = 0x00
+    [11] = 0x00
+    [12] = 0x00
+    [13] = 0x00
+    [14] = 0x00
+    [15] = 0x00
+  }
+  reserved = {
+    [0] = 0x0000000000000000
+    [1] = 0x0000000000000000
+    [2] = 0x0000000000000000
+    [3] = 0x0000000000000000
+    [4] = 0x0000000000000000
+    [5] = 0x0000000000000000
+    [6] = 0x0000000000000000
+    [7] = 0x0000000000000000
+    [8] = 0x0000000000000000
+    [9] = 0x0000000000000000
+    [10] = 0x0000000000000000
+    [11] = 0x0000000000000000
+    [12] = 0x0000000000000000
+    [13] = 0x0000000000000000
+    [14] = 0x0000000000000000
+    [15] = 0x0000000000000000
+  }
+}
+
+(lldb)
+Process 7553 stopped
+* thread #1: tid = 0x11ca8, 0x0000000113cae899 LLDB`DynamicLoaderMacOSXDYLD::ReadAllImageInfosStructure(this=0x00007fe541f91090) + 1801 at DynamicLoaderMacOSXDYLD.cpp:788, queue = 'com.apple.main-thread', stop reason = step over
+    frame #0: 0x0000000113cae899 LLDB`DynamicLoaderMacOSXDYLD::ReadAllImageInfosStructure(this=0x00007fe541f91090) + 1801 at DynamicLoaderMacOSXDYLD.cpp:788
+   785 	                // are the original, non-slid addresses, and need to be adjusted.  Most importantly
+   786 	                // the address of dyld and the notification address need to be adjusted.
+   787
+-> 788 	                if (dyld_all_image_infos_addr != m_dyld_all_image_infos_addr)
+   789 	                {
+   790 	                    uint64_t image_infos_offset = dyld_all_image_infos_addr - m_dyld_all_image_infos.dyldImageLoadAddress;
+   791 	                    uint64_t notification_offset = m_dyld_all_image_infos.notification - m_dyld_all_image_infos.dyldImageLoadAddress;
+(lldb) p/x dyld_all_image_infos_addr
+(uint64_t) $16 = 0x0000000120030000
+(lldb) p m_dyld_all_image_infos
+(DynamicLoaderMacOSXDYLD::DYLDAllImageInfos) $17 = {
+  version = 14
+  dylib_info_count = 0
+  dylib_info_addr = 0
+  notification = 4831885992
+  processDetachedFromSharedRegion = false
+  libSystemInitialized = false
+  dyldImageLoadAddress = 4831838208
+}
+(lldb) p/x m_dyld_all_image_infos.notification
+(lldb::addr_t) $18 = 0x000000012000baa8
+(lldb) p/x m_dyld_all_image_infos.dyldImageLoadAddress
+(lldb::addr_t) $19 = 0x0000000120000000
+(lldb) p/x dyld_all_image_infos
+(void *) $20 = 0x000000a50000000e
+(lldb) p/x dyld_all_image_infos_addr
+(uint64_t) $21 = 0x0000000120030000
+(lldb) p/x m_dyld_all_image_infos_addr
+(lldb::addr_t) $22 = 0x000000012008c000

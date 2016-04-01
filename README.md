@@ -120,7 +120,6 @@ there's a custom debugserver command to get its address.
 already some code in mac_debmod.cpp but it's OS X specific and has not
 really been updated to handle dyld_shared_cache so there is some work to
 do).
-  - ~/lldb/source/Plugins/ObjectFile/Mach-O/ObjectFileMachO.cpp:2402,2667
   - ~/lldb/source/Target/Process.cpp:Process::Launch
   - ~/lldb/source/Plugins/Process/gdb-remote/ProcessGDBRemote::DoLaunch
   - jGetLoadedDynamicLibrariesInfos,ProcessGDBRemote::GetLoadedDynamicLibrariesInfos
@@ -131,6 +130,7 @@ do).
   - ProcessGDBRemote::DoLaunch
 
 3) register the images as modules and their symbols as debug symbols
+  - ~/lldb/source/Plugins/ObjectFile/Mach-O/ObjectFileMachO.cpp:2402,2667
 
 4) maybe even try to fetch symbol files from the xcode directory for
 better debugging (and/or app's dSYM for source-level debugging).
@@ -139,3 +139,7 @@ better debugging (and/or app's dSYM for source-level debugging).
 
 6) closing IDA while debugging does not stop remote process.
    have to step out of a few functions in order from stop process to work - why?
+
+7) debug 32-bit apps in ida64 - assert that when iOS debugging, have to use idaq for 32-bit and idaq64 for 64-bit
+
+8) quitting app on the iphone during/after debugging might crash the phone
