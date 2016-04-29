@@ -110,13 +110,12 @@ The included demo.app represents the minimum required to get code running on iOS
 
 * With some modifications, it may be possible to use this without Xcode installed; however, you would need a copy of the relevant DeveloperDiskImage.dmg (included with Xcode). lldb would also run slower as symbols would be downloaded from the device on-the-fly.
 
-1) find the dyld debug structure in memory (dyld_all_image_infos). IIRC
+- find the dyld debug structure in memory (dyld_all_image_infos). IIRC
 there's a custom debugserver command to get its address.
   - qShlibInfoAddr
   - DNBProcessGetSharedLibraryInfoAddress
   - debugserver/source/DNB.cpp
-
-2) build a list of images by parsing dyld_all_image_infos (there is
+- build a list of images by parsing dyld_all_image_infos (there is
 already some code in mac_debmod.cpp but it's OS X specific and has not
 really been updated to handle dyld_shared_cache so there is some work to
 do).
@@ -128,18 +127,23 @@ do).
   - DynamicLoaderMacOSXDYLD::AddModulesUsingImageInfosAddress
   - /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/mach-o/dyld_images.h
   - ProcessGDBRemote::DoLaunch
-
-3) register the images as modules and their symbols as debug symbols
+- register the images as modules and their symbols as debug symbols
   - ~/lldb/source/Plugins/ObjectFile/Mach-O/ObjectFileMachO.cpp:2402,2667
+- gdb tests on windows
+- workaround with libqcocoa events - https://bugreports.qt.io/browse/QTBUG-41632
+- breakpoints
+- single step
+- symbols
 
-4) maybe even try to fetch symbol files from the xcode directory for
-better debugging (and/or app's dSYM for source-level debugging).
-
-5) ARM W,D registers - dbg_gdb.cfg, aarch64-fpu.xml
-
-6) closing IDA while debugging does not stop remote process.
-   have to step out of a few functions in order from stop process to work - why?
-
-7) debug 32-bit apps in ida64 - assert that when iOS debugging, have to use idaq for 32-bit and idaq64 for 64-bit
-
-8) quitting app on the iphone during/after debugging might crash the phone
+- process attach
+- step out
+- call stack
+- process stop - fails when process is running (and maybe other times)
+- disable ASLR
+- dSYM files
+- get memory info - work like mac_debmod
+- 'load debug symbols' in module list context menu
+- lldb cli
+- sluggish ui when process is running
+- fix all the TFIXMEs
+- integrate ios-deploy into IDA
